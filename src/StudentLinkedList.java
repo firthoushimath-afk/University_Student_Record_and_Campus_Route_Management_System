@@ -46,18 +46,34 @@ public class StudentLinkedList {
 
     public void displayStudents() {
 
+
         if (head == null) {
-            System.out.println("No student records found.");
+            System.out.println("\nNo student records found.");
             return;
         }
+
+    System.out.println("\n==============================================================");
+    System.out.printf("%-15s %-20s %-15s %-10s%n",
+            "Student ID", "Name", "Programme", "Marks");
+    System.out.println("==============================================================");
 
         Node current = head;
 
         while (current != null) {
-            System.out.println(current.student);
-            System.out.println("----------------------");
+
+            Student student = current.student;
+
+            System.out.printf("%-15s %-20s %-15s %-10.2f%n",
+                    student.getStudentId(),
+                    student.getName(),
+                    student.getProgramme(),
+                    student.getMarks());
+
             current = current.next;
         }
+
+    System.out.println("==============================================================");
+
     }
 
     public Student searchStudent(String studentId) {
