@@ -37,11 +37,33 @@ public class Main {
                     System.out.print("Enter Student ID : ");
                     String id = input.nextLine();
 
-                    System.out.print("Enter Student Name : ");
-                    String name = input.nextLine();
+                    String name;
 
-                    System.out.print("Enter Programme : ");
-                    String programme = input.nextLine();
+                    while (true) {
+
+                        System.out.print("Enter Student Name : ");
+                        name = input.nextLine().trim();
+
+                        if (!name.isEmpty()) {
+                            break;
+                        }
+
+                        System.out.println("Error: Name Cannot Be Empty!");
+                    }
+
+                    String programme;
+
+                    while (true) {
+
+                        System.out.print("Enter Programme : ");
+                        programme = input.nextLine().trim();
+
+                        if (!programme.isEmpty()) {
+                            break;
+                        }
+
+                        System.out.println("Error: Programme Cannot Be Empty!");
+                    }
 
                     double marks;
 
