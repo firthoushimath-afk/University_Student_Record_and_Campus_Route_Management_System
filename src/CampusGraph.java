@@ -77,6 +77,23 @@ public class CampusGraph {
         System.out.println("Connection added: " + location1 + " <-> " + location2);
     }
 
+        /**
+     * Removes a connection (edge) between two campus locations.
+     * Since roads are two-way, the connection is removed in both directions.
+     * If either location does not exist, prints an error and does nothing.
+     */
+    public void removeConnection(String location1, String location2) {
+        if (!adjacencyList.containsKey(location1) || !adjacencyList.containsKey(location2)) {
+            System.out.println("Cannot Create Connection");
+            return;
+        }
+
+        adjacencyList.get(location1).remove(location2);
+        adjacencyList.get(location2).remove(location1);
+
+        System.out.println("Connection removed: " + location1 + " <-> " + location2);
+    }
+
     // Temporary test method - we will replace this later
     public void printGraph() {
         System.out.println("Graph currently has " + adjacencyList.size() + " locations.");
