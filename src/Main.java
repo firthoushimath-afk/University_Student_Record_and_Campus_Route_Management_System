@@ -1,9 +1,15 @@
 public class Main {
     public static void main(String[] args) {
-        // Create a new CampusGraph object
         CampusGraph graph = new CampusGraph();
 
-        // Test that it initializes correctly
+        graph.addLocation("Library");
+        graph.addLocation("Computer Lab");
+        graph.addLocation("Cafeteria");
+
+        graph.addConnection("Library", "Computer Lab"); // should succeed
+        graph.addConnection("Computer Lab", "Cafeteria"); // should succeed
+        graph.addConnection("Library", "Sports Complex"); // should fail - Sports Complex doesn't exist
+
         graph.printGraph();
     }
 }
