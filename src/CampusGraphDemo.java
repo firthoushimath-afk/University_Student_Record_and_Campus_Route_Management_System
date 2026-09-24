@@ -4,7 +4,7 @@
  * Responsibility: Graph Implementation, Campus Location/Connection
  * Management, BFS Traversal.
  */
-public class Main {
+public class CampusGraphDemo {
     public static void main(String[] args) {
 
         System.out.println("===== CAMPUS GRAPH DEMONSTRATION =====\n");
