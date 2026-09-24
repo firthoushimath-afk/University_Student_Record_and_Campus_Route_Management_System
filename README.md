@@ -1,43 +1,72 @@
-# University_Student_Record_and_Campus_Route_Management_System# University Student Record and Campus Route Management System
-
-| Name | Student ID | Responsibility |
-|--------|------------|---------------|
-| A.M. Arfan | 23da2-0930| BST Implementation, Hashing Implementation, Student 
+# University Student Record and Campus Route Management System
 
 ## Project Description
 
-This Java console application manages university student records and campus routes using various data structures including Linked Lists, Stacks, Queues, Binary Search Trees (BST), Hash Tables, and Graphs.
+This Java console application manages university student records and campus routes using multiple data structures:
 
-Features include:
+- Linked List
+- Stack
+- Queue
+- Binary Search Tree (BST)
+- Hashing (HashMap)
+- Graph (Adjacency List)
 
-- Add, update, delete, search, and display student records
-- Manage service requests using a Queue
-- Maintain recent actions using a Stack
-- Organize student records using a Binary Search Tree (BST)
-- Perform fast student searches using Hashing (HashMap)
-- Manage campus locations and connections using a Graph
-- Traverse the campus network using BFS or DFS
+## Group Members
 
----
+| Name | Student ID | Responsibility |
+|--------|------------|---------------|
+| MFA. Himath | 23DA2-0895 | Linked List and Student Management |
+| M.I.M. Amhar | 23DA2-0515 | Graph Implementation and BFS Traversal |
+| M.U.M. Usama Lathin | 23DA2-0838 | Stack and Queue Implementation |
+| A.M. Arfan | 23DA2-0930 | BST and Hashing Implementation |
 
-## My Contribution (A.M. Arfan)
+## Features
 
-### StudentBST.java
-
-Implemented a Binary Search Tree (BST) for student record management.
-
-Features:
-
-- Insert Student
-- Search Student by Student ID
+### Student Management
+- Add Student
+- Search Student
+- Update Student
+- Delete Student
 - Display Students
-- In-Order Traversal
-- Duplicate Student ID Validation
-- Student Not Found Validation
 
-Example:
+### Stack
+- Store Recent Actions
+- Display Action History
 
-```text
-S002
-├── S001
-└── S003
+### Queue
+- Add Service Requests
+- Process Requests (FIFO)
+
+### BST
+- Insert Students
+- Search Students
+- Display Students
+
+### Hashing
+- Fast Student Search using Student ID
+
+### Graph
+- Add Campus Locations
+- Remove Campus Locations
+- Add Connections
+- Remove Connections
+- Display Connections
+- BFS Traversal
+
+## Data Structures Used
+
+- Linked List
+- Stack
+- Queue
+- Binary Search Tree (BST)
+- HashMap
+- Graph (Adjacency List)
+
+## Module
+
+CIT300 Data Structures and Algorithms
+
+## Assignment
+
+Graded Practical Assignment 1
+University Student Record and Campus Route Management System
