@@ -1,10 +1,10 @@
 public class Student {
+
     private String studentId;
     private String name;
     private String programme;
     private double marks;
 
-    // Constructor
     public Student(String studentId, String name, String programme, double marks) {
         this.studentId = studentId;
         this.name = name;
@@ -12,7 +12,6 @@ public class Student {
         this.marks = marks;
     }
 
-    // Getters
     public String getStudentId() {
         return studentId;
     }
@@ -29,7 +28,6 @@ public class Student {
         return marks;
     }
 
-    // Setters
     public void setName(String name) {
         this.name = name;
     }
@@ -45,8 +43,8 @@ public class Student {
     @Override
     public String toString() {
         return "Student ID: " + studentId +
-               "\nName: " + name +
-               "\nProgramme: " + programme +
-               "\nMarks: " + marks;
+                "\nName: " + name +
+                "\nProgramme: " + programme +
+                "\nMarks: " + marks;
     }
 }
