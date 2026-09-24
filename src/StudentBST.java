@@ -1,3 +1,13 @@
+/*
+* StudentBST
+* Purpose:
+* Stores student records using a Binary Search Tree for sorted data.
+*
+* Features:
+* - Insert Student
+* - Search Student by ID
+* - Display Students in sorted order
+*/
 public class StudentBST {
 
     private BSTNode root;
