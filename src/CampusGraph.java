@@ -6,25 +6,42 @@ import java.util.Queue;
 import java.util.LinkedList;
 import java.util.Set;
 import java.util.HashSet;
+
 /**
  * CampusGraph
- * Represents the university campus as a graph.
- * Campus locations are vertices, and roads/connections are edges.
- * Implemented using an Adjacency List (HashMap of Lists).
+ * ------------
+ * Represents the university campus as a graph data structure.
+ *
+ * - Campus locations (e.g. Library, Cafeteria) are VERTICES.
+ * - Roads / direct connections between locations are EDGES.
+ *
+ * Implementation: Adjacency List, using a HashMap where:
+ *   key   = a location name (String)
+ *   value = a List of locations directly connected to that location
+ *
+ * Supports: adding/removing locations, adding/removing connections,
+ * displaying all connections, and BFS traversal.
+ *
+ * Author: M.I.M. Amhar - Student ID: 23DA2-0515
+ * Responsibility: Graph Implementation, Campus Location/Connection
+ * Management, BFS Traversal.
  */
 public class CampusGraph {
 
-    // Adjacency list: each location maps to a list of directly connected locations
+    // Adjacency list storing each location and its list of direct neighbours
     private Map<String, List<String>> adjacencyList;
 
-    // Constructor: initializes an empty graph
+    /**
+     * Constructor: creates an empty campus graph with no locations.
+     */
     public CampusGraph() {
         adjacencyList = new HashMap<>();
     }
 
     /**
      * Adds a new campus location (vertex) to the graph.
-     * If the location already exists, prints an error and does nothing.
+     * @param location the name of the location to add
+     * Prints "Error: Location Already Exists" if the location is a duplicate.
      */
     public void addLocation(String location) {
         if (adjacencyList.containsKey(location)) {
@@ -35,11 +52,11 @@ public class CampusGraph {
         System.out.println("Location added: " + location);
     }
 
-        /**
-     * Removes a campus location (vertex) from the graph.
-     * Also removes it from every other location's connection list,
-     * so no leftover/dangling connections remain.
-     * If the location does not exist, prints an error.
+    /**
+     * Removes a campus location (vertex) from the graph, along with
+     * any connections other locations have pointing to it.
+     * @param location the name of the location to remove
+     * Prints "Location Not Found" if the location does not exist.
      */
     public void removeLocation(String location) {
         if (!adjacencyList.containsKey(location)) {
@@ -47,10 +64,9 @@ public class CampusGraph {
             return;
         }
 
-        // Remove the location itself (and its own connection list)
         adjacencyList.remove(location);
 
-        // Remove this location from every other location's list of connections
+        // Clean up dangling references to the removed location
         for (List<String> connections : adjacencyList.values()) {
             connections.remove(location);
         }
@@ -58,10 +74,11 @@ public class CampusGraph {
         System.out.println("Location removed: " + location);
     }
 
-        /**
-     * Adds a connection (edge) between two campus locations.
-     * Since campus roads are two-way, the connection is added in both directions.
-     * If either location does not exist, prints an error and does nothing.
+    /**
+     * Adds a two-way connection (edge) between two campus locations.
+     * @param location1 first location
+     * @param location2 second location
+     * Prints "Cannot Create Connection" if either location does not exist.
      */
     public void addConnection(String location1, String location2) {
         if (!adjacencyList.containsKey(location1) || !adjacencyList.containsKey(location2)) {
@@ -69,7 +86,6 @@ public class CampusGraph {
             return;
         }
 
-        // Avoid adding a duplicate connection
         if (!adjacencyList.get(location1).contains(location2)) {
             adjacencyList.get(location1).add(location2);
         }
@@ -80,10 +96,11 @@ public class CampusGraph {
         System.out.println("Connection added: " + location1 + " <-> " + location2);
     }
 
-        /**
-     * Removes a connection (edge) between two campus locations.
-     * Since roads are two-way, the connection is removed in both directions.
-     * If either location does not exist, prints an error and does nothing.
+    /**
+     * Removes a two-way connection (edge) between two campus locations.
+     * @param location1 first location
+     * @param location2 second location
+     * Prints "Cannot Create Connection" if either location does not exist.
      */
     public void removeConnection(String location1, String location2) {
         if (!adjacencyList.containsKey(location1) || !adjacencyList.containsKey(location2)) {
@@ -97,9 +114,9 @@ public class CampusGraph {
         System.out.println("Connection removed: " + location1 + " <-> " + location2);
     }
 
-        /**
-     * Displays all campus locations and their direct connections.
-     * If the graph has no locations at all, prints a message instead.
+    /**
+     * Displays every campus location and its list of direct connections.
+     * Prints "No Locations Available" if the graph has no locations at all.
      */
     public void displayConnections() {
         if (adjacencyList.isEmpty()) {
@@ -113,11 +130,11 @@ public class CampusGraph {
         }
     }
 
-        /**
-     * Performs a Breadth-First Search (BFS) traversal of the campus graph,
-     * starting from the given location.
-     * Visits the starting location first, then all its direct neighbours,
-     * then their neighbours, and so on - level by level.
+    /**
+     * Performs a Breadth-First Search (BFS) traversal starting from the
+     * given location, visiting the campus network level by level.
+     * @param startLocation the location to begin the traversal from
+     * Prints "Location Not Found" if the starting location does not exist.
      */
     public void bfsTraversal(String startLocation) {
         if (!adjacencyList.containsKey(startLocation)) {
@@ -125,8 +142,8 @@ public class CampusGraph {
             return;
         }
 
-        Set<String> visited = new HashSet<>();   // tracks locations already visited
-        Queue<String> queue = new LinkedList<>(); // holds locations waiting to be visited
+        Set<String> visited = new HashSet<>();
+        Queue<String> queue = new LinkedList<>();
 
         visited.add(startLocation);
         queue.add(startLocation);
@@ -134,10 +151,9 @@ public class CampusGraph {
         System.out.println("BFS Traversal starting from " + startLocation + ":");
 
         while (!queue.isEmpty()) {
-            String current = queue.poll(); // remove and get the front of the queue
+            String current = queue.poll();
             System.out.println(current);
 
-            // Visit each neighbour of the current location
             for (String neighbour : adjacencyList.get(current)) {
                 if (!visited.contains(neighbour)) {
                     visited.add(neighbour);
@@ -147,7 +163,10 @@ public class CampusGraph {
         }
     }
 
-    // Temporary test method - we will replace this later
+    /**
+     * Temporary utility method - prints how many locations are currently
+     * in the graph. Used during development/testing.
+     */
     public void printGraph() {
         System.out.println("Graph currently has " + adjacencyList.size() + " locations.");
     }
