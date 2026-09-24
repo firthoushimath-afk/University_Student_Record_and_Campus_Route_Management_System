@@ -2,7 +2,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
-
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Set;
+import java.util.HashSet;
 /**
  * CampusGraph
  * Represents the university campus as a graph.
@@ -92,6 +95,56 @@ public class CampusGraph {
         adjacencyList.get(location2).remove(location1);
 
         System.out.println("Connection removed: " + location1 + " <-> " + location2);
+    }
+
+        /**
+     * Displays all campus locations and their direct connections.
+     * If the graph has no locations at all, prints a message instead.
+     */
+    public void displayConnections() {
+        if (adjacencyList.isEmpty()) {
+            System.out.println("No Locations Available");
+            return;
+        }
+
+        for (String location : adjacencyList.keySet()) {
+            List<String> connections = adjacencyList.get(location);
+            System.out.println(location + " -> " + connections);
+        }
+    }
+
+        /**
+     * Performs a Breadth-First Search (BFS) traversal of the campus graph,
+     * starting from the given location.
+     * Visits the starting location first, then all its direct neighbours,
+     * then their neighbours, and so on - level by level.
+     */
+    public void bfsTraversal(String startLocation) {
+        if (!adjacencyList.containsKey(startLocation)) {
+            System.out.println("Location Not Found");
+            return;
+        }
+
+        Set<String> visited = new HashSet<>();   // tracks locations already visited
+        Queue<String> queue = new LinkedList<>(); // holds locations waiting to be visited
+
+        visited.add(startLocation);
+        queue.add(startLocation);
+
+        System.out.println("BFS Traversal starting from " + startLocation + ":");
+
+        while (!queue.isEmpty()) {
+            String current = queue.poll(); // remove and get the front of the queue
+            System.out.println(current);
+
+            // Visit each neighbour of the current location
+            for (String neighbour : adjacencyList.get(current)) {
+                if (!visited.contains(neighbour)) {
+                    visited.add(neighbour);
+                    queue.add(neighbour);
+                }
+            }
+        }
     }
 
     // Temporary test method - we will replace this later

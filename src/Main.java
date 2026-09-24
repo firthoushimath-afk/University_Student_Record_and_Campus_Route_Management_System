@@ -5,13 +5,17 @@ public class Main {
         graph.addLocation("Library");
         graph.addLocation("Computer Lab");
         graph.addLocation("Cafeteria");
+        graph.addLocation("Main Building");
+        graph.addLocation("Lecture Hall");
 
         graph.addConnection("Library", "Computer Lab");
         graph.addConnection("Computer Lab", "Cafeteria");
+        graph.addConnection("Cafeteria", "Main Building");
+        graph.addConnection("Main Building", "Lecture Hall");
 
-        graph.removeConnection("Library", "Computer Lab"); // should succeed
-        graph.removeConnection("Library", "Sports Complex"); // should fail - doesn't exist
+        graph.bfsTraversal("Library");
 
-        graph.printGraph();
+        System.out.println("---");
+        graph.bfsTraversal("Sports Complex"); // should fail - not found
     }
 }
