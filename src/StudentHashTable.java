@@ -56,4 +56,9 @@ public class StudentHashTable {
             System.out.println("--------------------");
         }
     }
+
+    public void removeStudent(String studentId) {
+        studentTable.remove(studentId);
+    }
+
 }

@@ -142,4 +142,18 @@ public class StudentLinkedList {
     return false;
     }
 
+    public void rebuildBST(StudentBST bst) {
+
+    bst.clear();
+
+    Node current = head;
+
+    while (current != null) {
+
+        bst.insert(current.student);
+
+        current = current.next;
+    }
+    }
+
 }

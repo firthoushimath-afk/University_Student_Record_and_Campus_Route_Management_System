@@ -21,6 +21,10 @@ public class StudentBST {
         return root;
     }
 
+    public void clear() {
+    root = null;
+    }
+
     // Public insert method
     public void insert(Student student) {
         root = insertRecursive(root, student);
